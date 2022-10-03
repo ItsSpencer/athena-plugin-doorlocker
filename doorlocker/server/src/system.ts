@@ -101,13 +101,13 @@ export class DoorSystem {
         }
 
         //emit success of door state change to initiating player
-        let operation: string = (doorList[index].doorState === 0) ? "aufgeschlossen" : "zugeschlossen";
+        let operation: string = (doorList[index].doorState === 0) ? "unlocked" : "locked";
         if (doubleDoor === false) {
-            Athena.player.emit.notification(player, "Tür " + operation);
-            Logger.log("Spieler " + player.data._id + " hat Tür " + doorList[index].doorHash + " " + operation);
+            Athena.player.emit.notification(player, "Door " + operation);
+            Logger.log("Player " + player.data._id + " changed door " + doorList[index].doorHash + " to " + operation);
         } else {
-            Athena.player.emit.notification(player, "Doppeltür " + operation);
-            Logger.log("Spieler " + player.data._id + " hat Tür " + doorList[index].doorHash + " und " + doorList[linkedIndex].doorHash + " " + operation);
+            Athena.player.emit.notification(player, "Doubledoor " + operation);
+            Logger.log("Player " + player.data._id + " changed door  " + doorList[index].doorHash + " and " + doorList[linkedIndex].doorHash + " to " + operation);
         }
     }
 
